@@ -47,10 +47,12 @@
 
         <Button
             android:id="@+id/errorStateButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="90dp"
+            android:layout_height="44dp"
+            android:gravity="center"
             android:layout_gravity="center_horizontal"
-            android:background="#eeeeee"
+            android:background="@drawable/padd"
+            android:textSize="16sp"
             android:text="@string/ydPageState_retry"/>
 
     </LinearLayout>

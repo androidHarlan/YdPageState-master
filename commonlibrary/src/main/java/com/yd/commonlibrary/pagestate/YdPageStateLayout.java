@@ -130,10 +130,10 @@ public class YdPageStateLayout extends RelativeLayout implements YdPageState{
                 typedArray.getDimensionPixelSize(R.styleable.YdPageStateLayout_emptyContentTextSize, 14);
 
         emptyStateTitleTextColor =
-                typedArray.getColor(R.styleable.YdPageStateLayout_emptyTitleTextColor, Color.BLACK);
+                typedArray.getColor(R.styleable.YdPageStateLayout_emptyTitleTextColor, getResources().getColor(R.color.textcolor333333));
 
         emptyStateContentTextColor =
-                typedArray.getColor(R.styleable.YdPageStateLayout_emptyContentTextColor, Color.BLACK);
+                typedArray.getColor(R.styleable.YdPageStateLayout_emptyContentTextColor,getResources().getColor(R.color.textcolor666666));
 
         emptyStateBackgroundColor =
                 typedArray.getColor(R.styleable.YdPageStateLayout_emptyBackgroundColor, Color.TRANSPARENT);
@@ -152,10 +152,10 @@ public class YdPageStateLayout extends RelativeLayout implements YdPageState{
                 typedArray.getDimensionPixelSize(R.styleable.YdPageStateLayout_errorContentTextSize, 14);
 
         errorStateTitleTextColor =
-                typedArray.getColor(R.styleable.YdPageStateLayout_errorTitleTextColor, Color.BLACK);
+                typedArray.getColor(R.styleable.YdPageStateLayout_errorTitleTextColor, getResources().getColor(R.color.textcolor333333));
 
         errorStateContentTextColor =
-                typedArray.getColor(R.styleable.YdPageStateLayout_errorContentTextColor, Color.BLACK);
+                typedArray.getColor(R.styleable.YdPageStateLayout_errorContentTextColor, getResources().getColor(R.color.textcolor666666));
 
         errorStateButtonTextColor =
                 typedArray.getColor(R.styleable.YdPageStateLayout_errorButtonTextColor, Color.BLACK);
