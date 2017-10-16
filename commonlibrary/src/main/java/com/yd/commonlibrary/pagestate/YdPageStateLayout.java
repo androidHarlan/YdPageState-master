@@ -365,7 +365,7 @@ public class YdPageStateLayout extends RelativeLayout implements YdPageState{
                 errorStateImageView.setImageDrawable(drawable);
                 errorStateTitleTextView.setText(errorText);
                 errorStateContentTextView.setText(errorTextContent);
-                errorStateButton.setText(errorButtonText);
+             //   errorStateButton.setText(errorButtonText);
                 errorStateButton.setOnClickListener(new OnClickListener() {
                     @Override
                     public void onClick(View v) {
