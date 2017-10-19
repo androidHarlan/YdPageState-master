@@ -28,7 +28,8 @@
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
             android:layout_marginTop="20dp"
-            android:textSize="15sp"
+            android:textColor="#666666"
+            android:textSize="18sp"
             android:textStyle="bold"
             tools:text="@string/ydPageState_error_title" />
 
@@ -42,6 +43,8 @@
             android:layout_marginRight="56dp"
             android:layout_marginTop="10dp"
             android:gravity="center"
+            android:textSize="16sp"
+            android:textColor="#333333"
             android:lineSpacingExtra="5.5dp"
             tools:text="@string/ydPageState_error_details" />
 

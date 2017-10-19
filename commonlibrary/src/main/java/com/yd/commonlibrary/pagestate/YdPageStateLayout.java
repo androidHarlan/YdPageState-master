@@ -146,7 +146,7 @@ public class YdPageStateLayout extends RelativeLayout implements YdPageState{
                 typedArray.getDimensionPixelSize(R.styleable.YdPageStateLayout_errorImageHeight, 308);
 
         errorStateTitleTextSize =
-                typedArray.getDimensionPixelSize(R.styleable.YdPageStateLayout_errorTitleTextSize, 15);
+                typedArray.getDimensionPixelSize(R.styleable.YdPageStateLayout_errorTitleTextSize, 16);
 
         errorStateContentTextSize =
                 typedArray.getDimensionPixelSize(R.styleable.YdPageStateLayout_errorContentTextSize, 14);

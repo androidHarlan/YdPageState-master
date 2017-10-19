@@ -4,6 +4,6 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
     <color name="view">#666666</color>
-    <color name="textcolor333333">#333333</color>
-    <color name="textcolor666666">#666666</color>
+    <color name="textcolor333333">#666666</color>
+    <color name="textcolor666666">#999999</color>
 </resources>
