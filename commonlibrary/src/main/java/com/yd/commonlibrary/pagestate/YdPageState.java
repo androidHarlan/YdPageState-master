@@ -14,7 +14,7 @@ public interface YdPageState {
 
     public void showContent();
 
-    public void showLoading();
+    public void showLoading(String Indicator);
 
     public void showEmpty(Drawable emptyImageDrawable, String emptyTextTitle, String emptyTextContent,
                           OnEmptyRetryListener listener);

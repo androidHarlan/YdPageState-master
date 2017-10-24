@@ -12,11 +12,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-
+import com.wang.avi.AVLoadingIndicatorView;
 import com.yd.commonlibrary.R;
 import com.yd.commonlibrary.pagestate.listener.OnEmptyRetryListener;
 import com.yd.commonlibrary.pagestate.listener.OnErrorRetryListener;
@@ -48,7 +47,7 @@ public class YdPageStateLayout extends RelativeLayout implements YdPageState{
 
     //loading state
     protected RelativeLayout loadingStateRelativeLayout;
-    protected ProgressBar loadingStateProgressBar;
+    protected AVLoadingIndicatorView loadingStateProgressBar;
 
     //emtpty state
     protected RelativeLayout emptyStateRelativeLayout;
@@ -86,6 +85,7 @@ public class YdPageStateLayout extends RelativeLayout implements YdPageState{
     protected int errorStateBackgroundColor;
 
     protected String state = CONTENT;
+
 
     public YdPageStateLayout(Context context) {
         this(context, null);
@@ -183,7 +183,7 @@ public class YdPageStateLayout extends RelativeLayout implements YdPageState{
      * Hide all other states and show content
      */
     public void showContent() {
-        switchState(CONTENT, null, null, null, null, null, null, Collections.<Integer>emptyList());
+        switchState(CONTENT, null, null, null, null, null, null, Collections.<Integer>emptyList(),"");
     }
 
     /**
@@ -192,14 +192,14 @@ public class YdPageStateLayout extends RelativeLayout implements YdPageState{
      * @param skipIds Ids of views not to show
      */
     public void showContent(List<Integer> skipIds) {
-        switchState(CONTENT, null, null, null, null, null, null, skipIds);
+        switchState(CONTENT, null, null, null, null, null, null, skipIds,"");
     }
 
     /**
      * Hide content and show the pagestate_progress bar
      */
-    public void showLoading() {
-        switchState(LOADING, null, null, null, null, null, null, Collections.<Integer>emptyList());
+    public void showLoading(String Indicator) {
+        switchState(LOADING, null, null, null, null, null, null, Collections.<Integer>emptyList(),Indicator);
     }
 
     /**
@@ -207,8 +207,8 @@ public class YdPageStateLayout extends RelativeLayout implements YdPageState{
      *
      * @param skipIds Ids of views to not hide
      */
-    public void showLoading(List<Integer> skipIds) {
-        switchState(LOADING, null, null, null, null, null, null, skipIds);
+    public void showLoading(List<Integer> skipIds,String Indicator) {
+        switchState(LOADING, null, null, null, null, null, null, skipIds,Indicator);
     }
 
     /**
@@ -222,7 +222,7 @@ public class YdPageStateLayout extends RelativeLayout implements YdPageState{
     public void showEmpty(Drawable emptyImageDrawable, String emptyTextTitle, String emptyTextContent,
                           OnEmptyRetryListener onEmptyRetryListener) {
         switchState(EMPTY, emptyImageDrawable, emptyTextTitle, emptyTextContent, null,
-                onEmptyRetryListener, null, Collections.<Integer>emptyList());
+                onEmptyRetryListener, null, Collections.<Integer>emptyList(),"");
     }
 
     /**
@@ -236,7 +236,7 @@ public class YdPageStateLayout extends RelativeLayout implements YdPageState{
      */
     public void showEmpty(Drawable emptyImageDrawable, String emptyTextTitle, String emptyTextContent,
                           OnEmptyRetryListener onEmptyRetryListener, List<Integer> skipIds) {
-        switchState(EMPTY, emptyImageDrawable, emptyTextTitle, emptyTextContent, null, onEmptyRetryListener, null, skipIds);
+        switchState(EMPTY, emptyImageDrawable, emptyTextTitle, emptyTextContent, null, onEmptyRetryListener, null, skipIds,"");
     }
 
     /**
@@ -251,7 +251,7 @@ public class YdPageStateLayout extends RelativeLayout implements YdPageState{
     public void showError(Drawable errorImageDrawable, String errorTextTitle, String errorTextContent,
                           String errorButtonText, OnErrorRetryListener onErrorRetryListener) {
         switchState(ERROR, errorImageDrawable, errorTextTitle, errorTextContent, errorButtonText, null,
-                onErrorRetryListener, Collections.<Integer>emptyList());
+                onErrorRetryListener, Collections.<Integer>emptyList(),"");
     }
 
     /**
@@ -267,7 +267,8 @@ public class YdPageStateLayout extends RelativeLayout implements YdPageState{
     public void showError(Drawable errorImageDrawable, String errorTextTitle, String errorTextContent,
                           String errorButtonText, OnErrorRetryListener onErrorRetryListener, List<Integer> skipIds) {
         switchState(ERROR, errorImageDrawable, errorTextTitle, errorTextContent, errorButtonText, null,
-                onErrorRetryListener, skipIds);
+                onErrorRetryListener, skipIds,"");
+
     }
 
     /**
@@ -317,7 +318,7 @@ public class YdPageStateLayout extends RelativeLayout implements YdPageState{
 
     private void switchState(String state, Drawable drawable, String errorText, String errorTextContent,
                              String errorButtonText, final OnEmptyRetryListener onEmptyRetryListener,
-                             final OnErrorRetryListener onErrorRetryListener, List<Integer> skipIds) {
+                             final OnErrorRetryListener onErrorRetryListener, List<Integer> skipIds,String Indicator) {
         this.state = state;
 
         switch (state) {
@@ -333,7 +334,7 @@ public class YdPageStateLayout extends RelativeLayout implements YdPageState{
                 hideEmptyView();
                 hideErrorView();
 
-                setLoadingView();
+                setLoadingView(Indicator);
                 setContentVisibility(false, skipIds);
                 break;
             case EMPTY:
@@ -379,17 +380,22 @@ public class YdPageStateLayout extends RelativeLayout implements YdPageState{
         }
     }
 
-    private void setLoadingView() {
+    private void setLoadingView(String indicator) {
         if (loadingStateRelativeLayout == null) {
             view = inflater.inflate(R.layout.pagestate_loading_view, null);
             loadingStateRelativeLayout = (RelativeLayout) view.findViewById(R.id.loadingStateRelativeLayout);
             loadingStateRelativeLayout.setTag(TAG_LOADING);
 
-            loadingStateProgressBar = (ProgressBar) view.findViewById(R.id.loadingStateProgressBar);
+            loadingStateProgressBar = (AVLoadingIndicatorView) view.findViewById(R.id.loadingStateProgressBar);
+            try {
+                loadingStateProgressBar.setIndicator(indicator);
+            }catch (Exception e){
+                loadingStateProgressBar.setIndicator(Indicator.BallBeatIndicator);
+            }
 
-            loadingStateProgressBar.getLayoutParams().width = loadingStateProgressBarWidth;
+         /*   loadingStateProgressBar.getLayoutParams().width = loadingStateProgressBarWidth;
             loadingStateProgressBar.getLayoutParams().height = loadingStateProgressBarHeight;
-            loadingStateProgressBar.requestLayout();
+            loadingStateProgressBar.requestLayout();*/
 
             //Set background color if not TRANSPARENT
             if (loadingStateBackgroundColor != Color.TRANSPARENT) {

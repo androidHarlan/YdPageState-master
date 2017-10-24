@@ -95,8 +95,12 @@ public class YdPageStateManager implements YdPageState {
         mYdPageStateLayout.showContent();
     }
 
-    public void showLoading() {
-        mYdPageStateLayout.showLoading();
+
+    /**
+     * 请使用Indicator.BallBeatIndicator，Indicator.BallGridPulseIndicator等字符串，否则找不到对应的加载视图
+     * */
+    public void showLoading(String Indicator) {
+        mYdPageStateLayout.showLoading(Indicator);
     }
 
     public void showEmpty(OnEmptyRetryListener listener) {
@@ -104,13 +108,13 @@ public class YdPageStateManager implements YdPageState {
                 context.getString(R.string.ydPageState_empty_title), context.getString(R.string.ydPageState_empty_details), null);
     }
 
-    public void showError(OnErrorRetryListener listener) {
+    public void showError(OnErrorRetryListener listener, final String Indicator) {
         mYdPageStateLayout.showError(context.getResources().getDrawable(R.mipmap.monkey_cry),
                 context.getString(R.string.ydPageState_error_title), context.getString(R.string.ydPageState_error_details),
                 context.getString(R.string.ydPageState_retry), new OnErrorRetryListener() {
                     @Override
                     public void onErrorRetry(View view) {
-                        mYdPageStateLayout.showLoading();
+                        mYdPageStateLayout.showLoading(Indicator);
                     }
                 });
     }

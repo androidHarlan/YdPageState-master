@@ -11,6 +11,7 @@ import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
 
+import com.yd.commonlibrary.pagestate.Indicator;
 import com.yd.commonlibrary.pagestate.YdPageStateManager;
 import com.yd.commonlibrary.pagestate.listener.OnEmptyRetryListener;
 import com.yd.commonlibrary.pagestate.listener.OnErrorRetryListener;
@@ -81,14 +82,14 @@ public class MainActivity extends AppCompatActivity {
                 ydPageStateManager.showContent();
                 break;
             case 1:
-                ydPageStateManager.showLoading();
+                ydPageStateManager.showLoading(Indicator.PacmanIndicator);
                 break;
             case 2:
                 ydPageStateManager.showEmpty(getResources().getDrawable(R.mipmap.monkey_nodata),
                         getString(R.string.ydPageState_empty_title), getString(R.string.ydPageState_empty_details), new OnEmptyRetryListener() {
                             @Override
                             public void onEmptyRetry(View view) {
-                                ydPageStateManager.showLoading();
+                                ydPageStateManager.showLoading(Indicator.BallBeatIndicator);
                             }
                         });
                 break;
@@ -99,7 +100,7 @@ public class MainActivity extends AppCompatActivity {
                         getString(R.string.ydPageState_retry), new OnErrorRetryListener() {
                             @Override
                             public void onErrorRetry(View view) {
-                                ydPageStateManager.showLoading();
+                                ydPageStateManager.showLoading(Indicator.PacmanIndicator);
                             }
                         });
                 break;

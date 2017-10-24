@@ -1,5 +1,6 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/loadingStateRelativeLayout"
     android:layout_width="fill_parent"
     android:layout_height="match_parent"
@@ -11,19 +12,51 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:orientation="vertical">
-
-        <ProgressBar
+     <!--   "BallPulseIndicator",
+        "BallGridPulseIndicator",
+        "BallClipRotateIndicator",
+        "BallClipRotatePulseIndicator",
+        "SquareSpinIndicator",
+        "BallClipRotateMultipleIndicator",
+        "BallPulseRiseIndicator",
+        "BallRotateIndicator",
+        "CubeTransitionIndicator",
+        "BallZigZagIndicator",
+        "BallZigZagDeflectIndicator",
+        "BallTrianglePathIndicator",
+        "BallScaleIndicator",
+        "LineScaleIndicator",
+        "LineScalePartyIndicator",
+        "BallScaleMultipleIndicator",
+        "BallPulseSyncIndicator",
+        "BallBeatIndicator",
+        "LineScalePulseOutIndicator",
+        "LineScalePulseOutRapidIndicator",
+        "BallScaleRippleIndicator",
+        "BallScaleRippleMultipleIndicator",
+        "BallSpinFadeLoaderIndicator",
+        "LineSpinFadeLoaderIndicator",
+        "TriangleSkewSpinIndicator",
+        "PacmanIndicator",
+        "BallGridBeatIndicator",
+        "SemiCircleSpinIndicator",
+        "com.wang.avi.sample.MyCustomIndicator"-->
+        <com.wang.avi.AVLoadingIndicatorView
             android:id="@+id/loadingStateProgressBar"
-            android:layout_width="120dp"
-            android:layout_height="120dp"
+            android:layout_width="90dp"
+            android:layout_height="90dp"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="0dp"
-            android:indeterminateDrawable="@drawable/pagestate_progress_gear_fu" />
+            app:indicatorName="SquareSpinIndicator"
+            app:indicatorColor="@color/view"
+            style="@style/AVLoadingIndicatorView"
+             />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
             android:layout_centerHorizontal="true"
             android:text="@string/ydPageState_loading"/>
 
