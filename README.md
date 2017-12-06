@@ -15,6 +15,9 @@ allprojects {
 	}
 ~~~~
 # 使用方法
+~~~
+ ydPageStateManager = YdPageStateManager.generate(this, R.id.rlay_parent);
+~~~
 # 展示文本
   ~~~
  ydPageStateManager.showContent();  
