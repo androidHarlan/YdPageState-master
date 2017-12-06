@@ -14,3 +14,33 @@ allprojects {
 	        compile 'com.github.androidHarlan:YdPageState-master:v1.0.0'
 	}
 ~~~~
+# 使用方法
+## 展示文本
+           ~~~
+
+                ydPageStateManager.showContent();		~~~     
+            
+		ydPageStateManager.showLoading(Indicator.PacmanIndicator);
+             
+        
+                ydPageStateManager.showEmpty(getResources().getDrawable(R.mipmap.monkey_nodata),
+                        getString(R.string.ydPageState_empty_title), getString(R.string.ydPageState_empty_details), new OnEmptyRetryListener() {
+                            @Override
+                            public void onEmptyRetry(View view) {
+                                ydPageStateManager.showLoading(Indicator.BallBeatIndicator);
+                            }
+                        });
+              
+    
+                //设置加载错误页显示
+                ydPageStateManager.showError(getResources().getDrawable(R.mipmap.nointent),
+                        getString(R.string.ydPageState_error_title), getString(R.string.ydPageState_error_details),
+                        getString(R.string.ydPageState_retry), new OnErrorRetryListener() {
+                            @Override
+                            public void onErrorRetry(View view) {
+                                ydPageStateManager.showLoading(Indicator.PacmanIndicator);
+                            }
+                        });
+              
+        }
+
