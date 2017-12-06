@@ -22,7 +22,7 @@ allprojects {
  ydPageStateManager.showLoading(Indicator.PacmanIndicator);
              
 # 展示空文本
-  ~~~
+~~~
  ydPageStateManager.showEmpty(getResources().getDrawable(R.mipmap.monkey_nodata), getString(R.string.ydPageState_empty_title), 
  getString(R.string.ydPageState_empty_details), new OnEmptyRetryListener() {
                             @Override
@@ -33,9 +33,10 @@ allprojects {
               
     
                 //设置加载错误页显示
+		
 ~~~
 # 展示错误文本
- ~~~
+~~~
 ydPageStateManager.showError(getResources().getDrawable(R.mipmap.nointent),
                         getString(R.string.ydPageState_error_title), getString(R.string.ydPageState_error_details),
                         getString(R.string.ydPageState_retry), new OnErrorRetryListener() {
