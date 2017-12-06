@@ -124,6 +124,9 @@ public class YdPageStateManager implements YdPageState {
                           OnEmptyRetryListener listener) {
         mYdPageStateLayout.showEmpty(emptyImageDrawable, emptyTextTitle, emptyTextContent, listener);
     }
+    public void showEmpty(Drawable emptyImageDrawable, String emptyTextTitle, String emptyTextContent) {
+        mYdPageStateLayout.showEmpty(emptyImageDrawable, emptyTextTitle, emptyTextContent);
+    }
 
     @Override
     public void showError(Drawable errorImageDrawable, String errorTextTitle, String errorTextContent,
