@@ -49,12 +49,14 @@
             tools:text="@string/ydPageState_empty_details" />
 
         <Button
+            android:visibility="gone"
             android:id="@+id/emptyStateButton"
             android:layout_width="90dp"
             android:layout_height="36dp"
             android:layout_gravity="center_horizontal"
             android:background="@drawable/padd"
             android:gravity="center"
+            android:textColor="#333333"
             android:textSize="16sp"
             android:text="@string/ydPageState_refresh"/>
 
