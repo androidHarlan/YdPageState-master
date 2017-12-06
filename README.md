@@ -16,15 +16,15 @@ allprojects {
 ~~~~
 # 使用方法
 ## 展示文本
-           ~~~
-
-                ydPageStateManager.showContent();		~~~     
-            
-		ydPageStateManager.showLoading(Indicator.PacmanIndicator);
+  ~~~
+ ydPageStateManager.showContent();  
+ ~~~
+ ydPageStateManager.showLoading(Indicator.PacmanIndicator);
              
-        
-                ydPageStateManager.showEmpty(getResources().getDrawable(R.mipmap.monkey_nodata),
-                        getString(R.string.ydPageState_empty_title), getString(R.string.ydPageState_empty_details), new OnEmptyRetryListener() {
+  ## 展示空文本
+  ~~~
+ ydPageStateManager.showEmpty(getResources().getDrawable(R.mipmap.monkey_nodata), getString(R.string.ydPageState_empty_title), 
+ getString(R.string.ydPageState_empty_details), new OnEmptyRetryListener() {
                             @Override
                             public void onEmptyRetry(View view) {
                                 ydPageStateManager.showLoading(Indicator.BallBeatIndicator);
@@ -32,8 +32,11 @@ allprojects {
                         });
               
     
-                //设置加载错误页显示
-                ydPageStateManager.showError(getResources().getDrawable(R.mipmap.nointent),
+                //设置加载错误页显示
+~~~
+ ## 展示错误文本
+ ~~~
+ydPageStateManager.showError(getResources().getDrawable(R.mipmap.nointent),
                         getString(R.string.ydPageState_error_title), getString(R.string.ydPageState_error_details),
                         getString(R.string.ydPageState_retry), new OnErrorRetryListener() {
                             @Override
@@ -42,5 +45,5 @@ allprojects {
                             }
                         });
               
-        }
-
+        }
+~~~
